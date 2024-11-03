@@ -3,33 +3,43 @@ class Solution {
 
         int stringLength = s.length();
 
-        int startIndex = 0;
-        int finalIndex = 0;
+        int startIndex = stringLength - 1;
+        int finalIndex = stringLength;
 
-        boolean isSpace = true;
+        boolean countStart = false;
 
-        for (int i = 0; i < stringLength; i++) {
+        for (int i = (stringLength - 1); 0 <= i; i--) {
 
 
-            if ((isSpace == false) && (s.charAt(i) ==  ' ')) {
-                isSpace = true;
+            if ((countStart == false) && (s.charAt(i) ==  ' ')) {
+                startIndex--;
+                finalIndex--;
                 continue;
             }
 
-            if ((isSpace == true) && (s.charAt(i) !=  ' ')) {
-                isSpace = false;
-                startIndex = i - 1;
-                finalIndex = startIndex + 1;
+            if ((countStart == false) && (s.charAt(i) !=  ' ')) {
+                countStart = true;
+                finalIndex--;
+                startIndex--;
                 continue;
             }
 
-            if ((isSpace == false) && (s.charAt(i) !=  ' ')) {
-                finalIndex++; 
+            if ((countStart == true) && (s.charAt(i) !=  ' ')) {
+                startIndex--;
+                continue; 
+            }
+
+            if ((countStart == true) && (s.charAt(i) ==  ' ')) {
+                break;
+            }
+
+            if (i == 0) {
+                startIndex = i;
+                break;
             }
   
         }
 
-       
 
         int result = finalIndex - startIndex;
 
