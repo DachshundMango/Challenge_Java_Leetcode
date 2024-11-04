@@ -4,16 +4,16 @@ class Solution {
         if (n == 0) {
             return ;
         } else {
-            for (int i = 0; i < nums2.length; i++) {
+            for (int nums2Index = 0; nums2Index < nums2.length; nums2Index++) {
                 
                 for (int j = 0; j < nums1.length; j++) {
                     
                     if (m - 1 < j && nums1[j] == 0) {
-                        nums1[j] = nums2[i];
+                        nums1[j] = nums2[nums2Index];
                         m++;
                         break;
 
-                    } else if (nums1[j] <= nums2[i]) {
+                    } else if (nums1[j] <= nums2[nums2Index]) {
                         continue;
 
                     } else {
@@ -25,7 +25,7 @@ class Solution {
                             nums1[finalIndex] = nums1[finalIndex-1];
                             finalIndex--;
                         }
-                        nums1[j] = nums2[i];
+                        nums1[j] = nums2[nums2Index];
                         m++;
                         break;
                     } 
