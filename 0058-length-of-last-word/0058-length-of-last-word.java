@@ -1,13 +1,11 @@
 class Solution {
     public int lengthOfLastWord(String s) {
 
-        int stringLength = s.length();
-
         int result = 0;
 
         boolean countStart = false;
 
-        for (int i = (stringLength - 1); 0 <= i; i--) {
+        for (int i = (s.length() - 1); 0 <= i; i--) {
 
 
             if ((countStart == false) && (s.charAt(i) ==  ' ')) {
@@ -29,7 +27,6 @@ class Solution {
                 break;
             }
 
-  
         }
 
         return result;
