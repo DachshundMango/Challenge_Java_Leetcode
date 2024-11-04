@@ -4,7 +4,7 @@ class Solution {
         int stringLength = s.length();
 
         int startIndex = stringLength - 1;
-        int finalIndex = stringLength;
+        int finalIndex = stringLength - 1;
 
         boolean countStart = false;
 
@@ -19,7 +19,6 @@ class Solution {
 
             if ((countStart == false) && (s.charAt(i) !=  ' ')) {
                 countStart = true;
-                finalIndex--;
                 startIndex--;
                 continue;
             }
@@ -33,13 +32,8 @@ class Solution {
                 break;
             }
 
-            if (i == 0) {
-                startIndex = i;
-                break;
-            }
   
         }
-
 
         int result = finalIndex - startIndex;
 
