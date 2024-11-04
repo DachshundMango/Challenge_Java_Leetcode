@@ -6,36 +6,34 @@ class Solution {
         int startIndex = stringLength - 1;
         int finalIndex = stringLength - 1;
 
+        int result = 0;
+
         boolean countStart = false;
 
         for (int i = (stringLength - 1); 0 <= i; i--) {
 
 
             if ((countStart == false) && (s.charAt(i) ==  ' ')) {
-                startIndex--;
-                finalIndex--;
                 continue;
             }
 
             if ((countStart == false) && (s.charAt(i) !=  ' ')) {
                 countStart = true;
-                startIndex--;
+                result = i + 1;
                 continue;
             }
 
             if ((countStart == true) && (s.charAt(i) !=  ' ')) {
-                startIndex--;
                 continue; 
             }
 
             if ((countStart == true) && (s.charAt(i) ==  ' ')) {
+                result -= (i + 1);
                 break;
             }
 
   
         }
-
-        int result = finalIndex - startIndex;
 
         return result;
     }
