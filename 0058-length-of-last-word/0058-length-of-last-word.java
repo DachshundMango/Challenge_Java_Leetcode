@@ -3,9 +3,6 @@ class Solution {
 
         int stringLength = s.length();
 
-        int startIndex = stringLength - 1;
-        int finalIndex = stringLength - 1;
-
         int result = 0;
 
         boolean countStart = false;
