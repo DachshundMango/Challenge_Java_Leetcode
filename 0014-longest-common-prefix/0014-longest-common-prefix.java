@@ -10,7 +10,7 @@ class Solution {
             char target = strs[0].charAt(i);
 
             if (i == 0) {
-                for (int j = 1; j < strs.length; j++) {
+                for (int j = 0; j < strs.length; j++) {
                     if (strs[j].length() == 0 || strs[j].charAt(0) != target) {
                         isPrefix = false;
                         break;
