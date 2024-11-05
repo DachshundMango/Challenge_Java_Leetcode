@@ -2,44 +2,44 @@ class Solution {
     
     public String longestCommonPrefix(String[] strs) {
         
+        String target = strs[0];
         String result = "";
         boolean isPrefix = true;
 
-        for (int i = 0; i < strs[0].length(); i++) {
+        for (int i = 1; i < strs.length; i++) {
 
-            char target = strs[0].charAt(i);
-
-            if (i == 0) {
-                for (int j = 0; j < strs.length; j++) {
-                    if (strs[j].length() == 0 || strs[j].charAt(0) != target) {
-                        isPrefix = false;
-                        break;
-                    }
-                }
-            }
-
-            if (isPrefix = false) {
-                result = "";
+            if (target.length() == 0 || strs[i].length() == 0) {
+                isPrefix = false;
                 break;
             }
 
-            boolean readyAdd = true;
+            String currentResult = "";
 
-            for (int j = 1; j < strs.length; j++) {
-                if (i >= strs[j].length() || strs[j].charAt(i) != target) {
-                    readyAdd = false;
+            for (int j = 0; j < strs[i].length(); j++) {
+        
+                if (target.charAt(0) != strs[i].charAt(0)) {
+                    isPrefix = false;
                     break;
-                } 
+                }
+
+                if (j < target.length() && strs[i].charAt(j) == target.charAt(j)) {
+                    currentResult += strs[i].charAt(j);
+                } else {
+                    break;
+                }
+     
             }
 
-            if (readyAdd == true) {
-                result += target;
-            } else {
-                break;
-            }
+            target = currentResult;
+        
         }
 
-        return result;
+        if (isPrefix == false || target.length() == 0) {
+            return "";
+        } else {
+            return target;
+        }
+
     }
 
 }
