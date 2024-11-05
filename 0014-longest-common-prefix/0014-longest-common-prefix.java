@@ -34,7 +34,7 @@ class Solution {
         
         }
 
-        if (isPrefix == false || target.length() == 0) {
+        if (isPrefix == false) {
             return "";
         } else {
             return target;
