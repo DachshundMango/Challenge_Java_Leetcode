@@ -3,12 +3,11 @@ class Solution {
     public String longestCommonPrefix(String[] strs) {
         
         String result = strs[0];
-        boolean isPrefix = true;
 
         for (int i = 1; i < strs.length; i++) {
 
             if (result.length() == 0 || strs[i].length() == 0) {
-                isPrefix = false;
+                result = "";
                 break;
             }
 
@@ -17,7 +16,7 @@ class Solution {
             for (int j = 0; j < strs[i].length(); j++) {
         
                 if (result.charAt(0) != strs[i].charAt(0)) {
-                    isPrefix = false;
+                    result = "";
                     break;
                 }
 
@@ -33,11 +32,7 @@ class Solution {
         
         }
 
-        if (isPrefix == false) {
-            return "";
-        } else {
-            return result;
-        }
+        return result;
 
     }
 
