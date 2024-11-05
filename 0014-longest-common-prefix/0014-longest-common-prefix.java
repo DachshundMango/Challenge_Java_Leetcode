@@ -11,7 +11,7 @@ class Solution {
 
             if (i == 0) {
                 for (int j = 1; j < strs.length; j++) {
-                    if (strs[j].length() > 0 && strs[j].charAt(0) != target) {
+                    if (strs[j].length() == 0 || strs[j].charAt(0) != target) {
                         isPrefix = false;
                         break;
                     }
