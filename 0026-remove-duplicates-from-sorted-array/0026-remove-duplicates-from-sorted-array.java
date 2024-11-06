@@ -4,27 +4,20 @@ class Solution {
         int k = 1;
 
         for (int i = 0; i < nums.length; i++) {
-
+            
             boolean isEnd = false;
-
+            
             for (int j = i + 1; j < nums.length; j++) {
-
-                if (nums[j] != nums[i]) {
-                    for (int m = i + 1; m < j; m++) {
-                        nums[m] = nums[j];
-                    }
-                    if (j == nums.length - 1) {
-                    isEnd = true;
-                    }
+                if (nums[j] > nums[i]) {
+                    nums[i + 1] = nums[j];
+                    k++;
                     break;
-                } else if (j == nums.length - 1) {
-                    k--;
+                }
+                if (j == nums.length - 1) {
                     isEnd = true;
                     break;
                 }
             }
-
-            k++;
 
             if (isEnd == true) {
                 break;
@@ -32,10 +25,8 @@ class Solution {
 
         }
 
+        return k;    
 
-        return k;
     }
-
-
 
 }
