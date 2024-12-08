@@ -1,31 +1,33 @@
 class Solution {
     public int[] plusOne(int[] digits) {
+        
+        int resultLength = digits.length;
 
-        digits[digits.length - 1]++;
-
-        StringBuilder numberString = new StringBuilder();
-
-        for(int i = 0; i < digits.length; i++) {
-
-            int number10 = digits[digits.length - 1 - i] / 10;
-            digits[digits.length - 1 - i] = digits[digits.length - 1 - i] % 10;
-            numberString.insert(0, String.valueOf(digits[digits.length - 1 - i]));
-
-            if(number10 == 1) {
+        for (int i = 0; i < digits.length; i++) {
+            digits[digits.length - 1 - i]++;
+            if (digits[digits.length - 1 - i] == 10) {
+                digits[digits.length - 1 - i] = 0;
                 if (i == digits.length - 1) {
-                    numberString.insert(0, String.valueOf(number10));
-                } else {
-                    digits[digits.length - 1 - i - 1]++;
+                    resultLength++;
                 }
+            } else {
+                break;
             }
         }
 
-        int[] resultArr = new int[numberString.length()];
+        if (resultLength > digits.length) {
+            int[] result = new int[resultLength];
+            result[0] = 1;
+            for (int i = 1; i < result.length; i++) {
+                result[i] = digits[i - 1];
+            }
 
-        for (int i = 0; i < resultArr.length; i++) {
-            resultArr[i] = Integer.parseInt(String.valueOf(numberString.charAt(i)));
+            return result;
+
+        } else {
+            return digits;
         }
 
-        return resultArr;
+
     }
 }
