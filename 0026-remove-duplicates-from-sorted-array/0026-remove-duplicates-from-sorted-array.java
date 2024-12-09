@@ -1,10 +1,10 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
         
-        int maximumValue = nums[nums.length - 1];
         int index = 1;
         int value = nums[0];
-        if (nums.length == 1 || nums[0] == maximumValue) {
+        
+        if (nums.length == 1) {
             return index;
         }
 
