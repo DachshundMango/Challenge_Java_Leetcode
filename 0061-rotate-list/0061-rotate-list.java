@@ -23,27 +23,23 @@ class Solution {
             listLength++;
         }
 
-        int leftLength = k % listLength;
+        ListNode midNode = head;
 
-        if (leftLength == 0) {
+        int splitLength = listLength - (k % listLength);
+
+        if (splitLength == listLength) {
             return head;
         }
 
-        ListNode midNode = head;
-
-        int rightLength = listLength - leftLength;
-
-        for (int i = 0; i < rightLength - 1; i++) {
+        for (int i = 0; i < splitLength - 1; i++) {
             midNode = midNode.next;
         }
 
         lastNode.next = head;
-        ListNode resultHead = midNode.next;
+        ListNode resultNode = midNode.next;
         midNode.next = null;
 
-        return resultHead;
+        return resultNode;
         
-        
-
     }
 }
