@@ -1,34 +1,33 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
+    
     public int majorityElement(int[] nums) {
 
-        int result = 0;
-        String checkedNumber = ",";
+        HashMap<Integer, Integer> resultMap = new HashMap<>();
 
-        for (int i = 0; i < nums.length; i++) {
-            
-            int key = nums[i];
-            int count = 0;
-
-            if (!checkedNumber.contains("," + key + ",")) {
-                
-                for (int j = i; j < nums.length; j++) {
-                    if (key == nums[j]) {
-                        count++;
-                    } 
-                }
-                
-                if (count > (nums.length / 2)) {
-                    result = key;
-                    break;
-                } 
-
-                checkedNumber += "" + key + ",";
-
+        for (int num : nums) {
+            if (!resultMap.containsKey(num)) {
+                resultMap.put(num, 1);
+            } else {
+                resultMap.put(num, resultMap.get(num) + 1);
             }
-       
+
+        }
+
+        int result = 0;
+
+        for (Map.Entry<Integer, Integer> entry : resultMap.entrySet()) {
+            if (entry.getValue() > nums.length / 2) {
+                result = entry.getKey();
+                break;
+            }
         }
 
         return result;
+
+    
     }
 }
         
