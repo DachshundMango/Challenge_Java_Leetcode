@@ -9,36 +9,35 @@ class Solution {
         }
 
         int commonLength = s.length();
-        
-        Map<Character, Integer> sMap = new HashMap<>();
-        Map<Character, Integer> tMap = new HashMap<>();
+        boolean result = true;
+        Map<Character, Integer> checkMap = new HashMap<>();
 
         for (int i = 0; i < commonLength; i++) {
-            if (sMap.containsKey(s.charAt(i))) {
-                sMap.put(s.charAt(i), sMap.get(s.charAt(i)) + 1);    
+            if (checkMap.containsKey(s.charAt(i))) {
+                checkMap.put(s.charAt(i), checkMap.get(s.charAt(i)) + 1);
             } else {
-                sMap.put(s.charAt(i), 1);
+                checkMap.put(s.charAt(i), 1);
             }
-            if (tMap.containsKey(t.charAt(i))) {
-                tMap.put(t.charAt(i), tMap.get(t.charAt(i)) + 1);
+        }
+        for (int i = 0; i < commonLength; i++) {
+            if (!checkMap.containsKey(t.charAt(i))) {
+                result = false;
+                break;
             } else {
-                tMap.put(t.charAt(i), 1);
+                checkMap.put(t.charAt(i), checkMap.get(t.charAt(i)) - 1);
+                if (checkMap.get(t.charAt(i)) < 0) {
+                    result = false;
+                    break;
+                }
             }
         }
 
-        if (!sMap.keySet().equals(tMap.keySet())) {
-            return false;
-        }
-
-        boolean result = true;
-            
-        for (Character key : sMap.keySet()) {
-            if (!sMap.get(key).equals(tMap.get(key))) {
+        for (Integer value : checkMap.values()) {
+            if (value != 0) {
                 result = false;
                 break;
             }
         }
-
         return result;
 
         
